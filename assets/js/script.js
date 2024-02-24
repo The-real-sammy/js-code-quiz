@@ -2,25 +2,27 @@
 
 // * A start button that when clicked a timer starts and the first question appears.
 
-var timerElement = document.querySelector(".timer")
-var win =
+var timerElement = document.querySelector(".timer");
+var timerCount = 60; // Set the initial timer count to 60 seconds
+
 
 // Undefined variables 
 var timer;
-var timerCount;
+var win;  //  used to track the user's win status
+
 
 function startTimer() {
 //  setting the timer 
   timer = setInterval(function() {
-    timerCount--; 
-    // double dash -- is the decrement operator, used to decrease value of variable by 1
-    timerElement.textContent=timerCount;
-    if (timerCount >= 0) {
-      // test if user has completed the 
-      if ()
-    }
+    timerCount--; // double dash -- is the decrement operator, used to decrease value of variable by 1
+    timerElement.textContent=timerCount; // Update the timer display
 
-  })
+    if (timerCount >= 0) {
+    // test if user has completed the quiz
+    // Stop the timer when it reaches 0
+   // Call a function to end the game when the timer runs out
+    }
+  }, 1000); // Set the interval to 1000ms (1 second)
 }
 
 
