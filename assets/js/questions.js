@@ -4,6 +4,9 @@
 
 var timerElement = document.querySelector(".timer");
 var timerCount = 60; // Set the initial timer count to 60 seconds
+var lose = document.createElement("div")
+lose.classList.add("loser");
+document.body.appendChild(lose);
 
 
 // Undefined variables 
@@ -45,6 +48,15 @@ startButton.addEventListener("click", function(){
 //   * When the game ends, it should display their score and give the user the ability to save their initials and their score
 
 function endGame() {
-  // code handle end of game and to display the  final score
+
+  function winner(){
+  //store win if answered correctly!
+  wordBlank.textContent = "Correct!🏆 "
+  winCounter++
+  startButton.disabled= false
+  storeWin()}
+
+  //test if timer has run out 
+  // code handle end of game and to display the final score
   // allow the user to save their initials and score to local storage 
 }
