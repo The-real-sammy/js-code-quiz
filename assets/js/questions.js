@@ -58,7 +58,25 @@ var startButton = document.querySelector("#start");
 startButton.addEventListener("click", function () {
   startTimer(); //timer starts when button is clicked.
 
-  // code to display first question:
+  // code to display question:
+
+  for (let i = 0; i< questions.length; i++) {
+    var questionObject = questions[i];
+  } ; // for loop to loop through questions array and then append to page.
+  var askQuestion = document.getElementById("#questions")
+  askQuestion.innerHTML = '<p>${i+1}. ${questionObject.question}</p>';
+
+  var answersOpt = document.createElement("ul"),
+  for (let i= 0; i< questionObject.options.length; i++) {
+    var option = questionObject.options[i];};
+
+    var optionItem=document.createElement("li");
+    optionItem.textContent=option;
+    optionsList.appendChild(optionItem);
+
+    askQuestion.appendChild(optionsList);
+    questions.appendChild(askQuestion)
+
 
   //   * Questions contain buttons for each answer.
   //   * 
