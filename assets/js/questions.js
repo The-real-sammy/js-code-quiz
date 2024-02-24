@@ -8,6 +8,31 @@ var lose = document.createElement("div")
 lose.classList.add("loser");
 document.body.appendChild(lose);
 
+var correctCounter = 0;
+var wrongCounter = 0;
+
+//Array of objects containing Questions, Options and Answers 
+var questions = [
+  {
+    question: "What is HTML? ",
+    options: ["HTML stands for Hyper Text Markup Language", "How to make Lasagne", "information about styling a webpage"]
+   answer: "HTML stands for Hyper Text Markup Language"
+  },
+  {
+    question: "What is CSS?",
+    options: ["Cascade style sheets - used to style webpages", "A html tag", "a JS element"],
+    answer: "Cascade style sheets - used to style webpages",
+  },
+  {
+    question: "What is DOM?",
+    options: ["Document Object Model", "a styling element", "Document oriented modelling"],
+    answer: "Document Object Model",
+  }
+  { question: "What is JavaScript?",
+  options: ["JavaScript is an interpreted, client-side, event-based, object oriented scripting language.", "it is another name for java", "a css styling property"],
+      answer: "JavaScript is an interpreted, client-side, event-based, object oriented scripting language.",}
+]
+
 
 // Undefined variables 
 var timer;
@@ -29,19 +54,19 @@ function startTimer() {
 }
 
 // eventListener added to start button to trigger timer, displaying first question
-var startButton= document.querySelector("#start");
-startButton.addEventListener("click", function(){
+var startButton = document.querySelector("#start");
+startButton.addEventListener("click", function () {
   startTimer(); //timer starts when button is clicked.
 
   // code to display first question:
 
-//   * Questions contain buttons for each answer.
-//   * 
-//   * When answer is clicked, the next question appears
-//   * 
-//   * If the answer clicked was incorrect then subtract time from the clock
+  //   * Questions contain buttons for each answer.
+  //   * 
+  //   * When answer is clicked, the next question appears
+  //   * 
+  //   * If the answer clicked was incorrect then subtract time from the clock
 
-// * The quiz should end when all questions are answered or the timer reaches 0.
+  // * The quiz should end when all questions are answered or the timer reaches 0.
 })
 
 
@@ -49,19 +74,20 @@ startButton.addEventListener("click", function(){
 
 function endGame() {
 
-  function winner(){
-  //store win if answered correctly!
-  wordBlank.textContent = "Correct!🏆 "
-  winCounter++
-  startButton.disabled= false
-  storeWin()}
+  function winner() {
+    //store win if answered correctly!
+    wordBlank.textContent = "Correct!🏆 "
+    correctCounter++
+    startButton.disabled = false
+    storeWin()
+  }
 
   // The loser function is called when timer reaches 0
-  function loser(){
+  function loser() {
     //store win if answered correctly!
     wordBlank.textContent = "Wrong Answer :( !! "
-    loseCounter++
-    startButton.disabled= false
+    wrongCounter++
+    startButton.disabled = false
     setLosses()
   }
 
