@@ -56,6 +56,15 @@ function endGame() {
   startButton.disabled= false
   storeWin()}
 
+  // The loser function is called when timer reaches 0
+  function loser(){
+    //store win if answered correctly!
+    wordBlank.textContent = "Wrong Answer :( !! "
+    loseCounter++
+    startButton.disabled= false
+    setLosses()
+  }
+
   //test if timer has run out 
   // code handle end of game and to display the final score
   // allow the user to save their initials and score to local storage 
