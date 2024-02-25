@@ -15,7 +15,7 @@ var wrongCounter = 0;
 var questions = [
   {
     question: "What is HTML? ",
-    options: ["HTML stands for Hyper Text Markup Language", "How to make Lasagne", "information about styling a webpage"]
+    options: ["HTML stands for Hyper Text Markup Language", "How to make Lasagne", "information about styling a webpage"],
    answer: "HTML stands for Hyper Text Markup Language"
   },
   {
@@ -27,7 +27,8 @@ var questions = [
     question: "What is DOM?",
     options: ["Document Object Model", "a styling element", "Document oriented modelling"],
     answer: "Document Object Model",
-  }
+  },
+    
   { question: "What is JavaScript?",
   options: ["JavaScript is an interpreted, client-side, event-based, object oriented scripting language.", "it is another name for java", "a css styling property"],
       answer: "JavaScript is an interpreted, client-side, event-based, object oriented scripting language.",}
@@ -55,27 +56,17 @@ function startTimer() {
 
 // eventListener added to start button to trigger timer, displaying first question
 var startButton = document.querySelector("#start");
-startButton.addEventListener("click", function () {
+startButton.addEventListener("click", function() {
   startTimer(); //timer starts when button is clicked.
-
+  
   // code to display question:
-
+var questionsContainer = document.getElementById("questions");
+questionsContainer.innerHTML=""; //clear existing Q's 
   for (let i = 0; i< questions.length; i++) {
     var questionObject = questions[i];
-  } ; // for loop to loop through questions array and then append to page.
-  var askQuestion = document.getElementById("#questions")
-  askQuestion.innerHTML = '<p>${i+1}. ${questionObject.question}</p>';
-
-  var answersOpt = document.createElement("ul"),
-  for (let i= 0; i< questionObject.options.length; i++) {
-    var option = questionObject.options[i];};
-
-    var optionItem=document.createElement("li");
-    optionItem.textContent=option;
-    optionsList.appendChild(optionItem);
-
-    askQuestion.appendChild(optionsList);
-    questions.appendChild(askQuestion)
+    console.log("is this the current question:", questionObject)
+    
+  } ;  })
 
 
   //   * Questions contain buttons for each answer.
@@ -85,7 +76,7 @@ startButton.addEventListener("click", function () {
   //   * If the answer clicked was incorrect then subtract time from the clock
 
   // * The quiz should end when all questions are answered or the timer reaches 0.
-})
+
 
 
 //   * When the game ends, it should display their score and give the user the ability to save their initials and their score
