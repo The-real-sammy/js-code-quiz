@@ -15,7 +15,7 @@ var wrongCounter = 0;
 var questions = [
   {
     question: "What is HTML? ",
-    options: ["HTML stands for Hyper Text Markup Language", "How to make Lasagne", "information about styling a webpage"]
+    options: ["HTML stands for Hyper Text Markup Language", "How to make Lasagne", "information about styling a webpage"],
    answer: "HTML stands for Hyper Text Markup Language"
   },
   {
@@ -27,7 +27,8 @@ var questions = [
     question: "What is DOM?",
     options: ["Document Object Model", "a styling element", "Document oriented modelling"],
     answer: "Document Object Model",
-  }
+  },
+    
   { question: "What is JavaScript?",
   options: ["JavaScript is an interpreted, client-side, event-based, object oriented scripting language.", "it is another name for java", "a css styling property"],
       answer: "JavaScript is an interpreted, client-side, event-based, object oriented scripting language.",}
@@ -52,30 +53,46 @@ function startTimer() {
     }
   }, 1000); // Set the interval to 1000ms (1 second)
 }
-
-// eventListener added to start button to trigger timer, displaying first question
 var startButton = document.querySelector("#start");
-startButton.addEventListener("click", function () {
+startButton.addEventListener("click", function() {
   startTimer(); //timer starts when button is clicked.
+  
+
+document.addEventListener("DOMContentLoaded", function() {
+// eventListener added to start button to trigger timer, displaying first question
 
   // code to display question:
+var questionsContainer = document.getElementById("question-title");
+
+if (questionsContainer) {
+questionsContainer.innerHTML=""; //clear existing Q's 
 
   for (let i = 0; i< questions.length; i++) {
     var questionObject = questions[i];
-  } ; // for loop to loop through questions array and then append to page.
-  var askQuestion = document.getElementById("#questions")
-  askQuestion.innerHTML = '<p>${i+1}. ${questionObject.question}</p>';
+    console.log("is this the current question:", questionObject)
 
-  var answersOpt = document.createElement("ul"),
-  for (let i= 0; i< questionObject.options.length; i++) {
-    var option = questionObject.options[i];};
+// for loop to loop through questions array and then append to page.
+var askQuestion = document.createElement("p")
+askQuestion.textContent = (i + 1) + "." + questionObject.question;
+questionsContainer.appendChild(askQuestion);
 
-    var optionItem=document.createElement("li");
-    optionItem.textContent=option;
-    optionsList.appendChild(optionItem);
+var answersOpt = document.createElement("ul");
+for (let j= 0; j < questionObject.options.length; j++) {
+  var option = questionObject.options[j];
 
-    askQuestion.appendChild(optionsList);
-    questions.appendChild(askQuestion)
+  var optionItem=document.createElement("li");
+  optionItem.textContent=option;
+  answersOpt.appendChild(optionItem);
+  questionsContainer.appendChild(answersOpt)
+};
+console.log("is this the askQuestions", askQuestion)
+console.log("what is this", answersOpt)
+}; 
+} else {
+  console.error("Questions container not found in the DOM");
+}
+  })
+ })
 
 
   //   * Questions contain buttons for each answer.
@@ -85,7 +102,7 @@ startButton.addEventListener("click", function () {
   //   * If the answer clicked was incorrect then subtract time from the clock
 
   // * The quiz should end when all questions are answered or the timer reaches 0.
-})
+
 
 
 //   * When the game ends, it should display their score and give the user the ability to save their initials and their score
