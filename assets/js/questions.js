@@ -53,20 +53,46 @@ function startTimer() {
     }
   }, 1000); // Set the interval to 1000ms (1 second)
 }
-
-// eventListener added to start button to trigger timer, displaying first question
 var startButton = document.querySelector("#start");
 startButton.addEventListener("click", function() {
   startTimer(); //timer starts when button is clicked.
   
+
+document.addEventListener("DOMContentLoaded", function() {
+// eventListener added to start button to trigger timer, displaying first question
+
   // code to display question:
-var questionsContainer = document.getElementById("questions");
+var questionsContainer = document.getElementById("question-title");
+
+if (questionsContainer) {
 questionsContainer.innerHTML=""; //clear existing Q's 
+
   for (let i = 0; i< questions.length; i++) {
     var questionObject = questions[i];
     console.log("is this the current question:", questionObject)
-    
-  } ;  })
+
+// for loop to loop through questions array and then append to page.
+var askQuestion = document.createElement("p")
+askQuestion.textContent = (i + 1) + "." + questionObject.question;
+questionsContainer.appendChild(askQuestion);
+
+var answersOpt = document.createElement("ul");
+for (let j= 0; j < questionObject.options.length; j++) {
+  var option = questionObject.options[j];
+
+  var optionItem=document.createElement("li");
+  optionItem.textContent=option;
+  answersOpt.appendChild(optionItem);
+  questionsContainer.appendChild(answersOpt)
+};
+console.log("is this the askQuestions", askQuestion)
+console.log("what is this", answersOpt)
+}; 
+} else {
+  console.error("Questions container not found in the DOM");
+}
+  })
+ })
 
 
   //   * Questions contain buttons for each answer.
