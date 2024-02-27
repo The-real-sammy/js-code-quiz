@@ -1,7 +1,7 @@
 // Create a code quiz that contains the following requirements:
 
 // * A start button that when clicked a timer starts and the first question appears.
-
+var wordBlank = document.querySelector("#feedback");
 var timerElement = document.querySelector(".timer");
 var timerCount = 60; // Set the initial timer count to 60 seconds
 var lose = document.createElement("div")
@@ -34,11 +34,33 @@ var questions = [
       answer: "JavaScript is an interpreted, client-side, event-based, object oriented scripting language.",}
 ]
 
-
 // Undefined variables 
 var timer;
 var win;  //  used to track the user's win status
 
+
+// start timer when button clicked 
+var startButton = document.querySelector(".start");
+startButton.addEventListener("click", function() {
+  startTimer(); //timer starts when button is clicked.
+  
+  
+  function winner() {
+    //store win if answered correctly!
+    wordBlank.textContent = "Correct!🏆 "
+    correctCounter++
+    startButton.disabled = false
+    // storeWin()
+  }; winner()
+  
+  // The loser function is called when timer reaches 0
+  function loser() {
+    //store win if answered correctly!
+    wordBlank.textContent = "Wrong Answer :( !! "
+    wrongCounter++
+    startButton.disabled = false
+    // setLosses()
+  }; loser ()
 
 function startTimer() {
   //  setting the timer 
@@ -47,16 +69,22 @@ function startTimer() {
     timerElement.textContent = timerCount; // Update the timer display
 
     if (timerCount >= 0) {
-      // test if user has completed the quiz
-      clearInterval(timer);// Stop the timer when it reaches 0
-      endGame() // Call a function to end the game when the timer runs out
+      // test if user has completed the quiz - && checks if both statements are true
+      if (winner() && timerCount > 0) {
+      clearInterval(timer);// Stop the timer 
+      winner();
+      
     }
+    }
+ if (timerCount === 0) {
+  clearInterval(timer);
+  loser() // Call a function to end the game when the timer runs out
+ }
   }, 1000); // Set the interval to 1000ms (1 second)
 }
-var startButton = document.querySelector("#start");
-startButton.addEventListener("click", function() {
-  startTimer(); //timer starts when button is clicked.
-  
+
+
+
 
 document.addEventListener("DOMContentLoaded", function() {
 // eventListener added to start button to trigger timer, displaying first question
@@ -94,6 +122,8 @@ console.log("what is this", answersOpt)
   })
  })
 
+ 
+
 
   //   * Questions contain buttons for each answer.
   //   * 
@@ -115,7 +145,7 @@ function endGame() {
     correctCounter++
     startButton.disabled = false
     storeWin()
-  }
+  }; winner()
 
   // The loser function is called when timer reaches 0
   function loser() {
@@ -124,7 +154,7 @@ function endGame() {
     wrongCounter++
     startButton.disabled = false
     setLosses()
-  }
+  }; loser ()
 
   //test if timer has run out 
   // code handle end of game and to display the final score
