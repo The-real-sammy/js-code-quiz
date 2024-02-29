@@ -38,13 +38,20 @@ var questions = [
 var timer;
 var win;  //  used to track the user's win status
 
+  // code to display question target the questions id 
+  var questionsContainer = document.getElementById("questions");
 
-// start timer when button clicked 
-var startButton = document.querySelector(".start");
-startButton.addEventListener("click", function() {
-  startTimer(); //timer starts when button is clicked.
-  
-  
+// eventListener added to start button to trigger timer, displaying first question
+function startQuiz () {
+  var startButton = document.querySelector(".start");
+  startButton.addEventListener("click", function() {
+    startTimer(); //timer starts when button is clicked.
+  }) // start timer when button clicked 
+questionsContainer.removeAttribute("class")
+
+}
+
+
   function winner() {
     //store win if answered correctly!
     wordBlank.textContent = "Correct!🏆 "
@@ -85,15 +92,11 @@ function startTimer() {
 
 
 
-
-document.addEventListener("DOMContentLoaded", function() {
-// eventListener added to start button to trigger timer, displaying first question
-
-  // code to display question:
-var questionsContainer = document.getElementById("question-title");
-
 if (questionsContainer) {
-questionsContainer.innerHTML=""; //clear existing Q's 
+questionsContainer.innerHTML=""; //clear existing text
+
+// hide text and display after button clicked 
+
 
   for (let i = 0; i< questions.length; i++) {
     var questionObject = questions[i];
@@ -110,8 +113,10 @@ for (let j= 0; j < questionObject.options.length; j++) {
 
   var optionItem=document.createElement("li");
   optionItem.textContent=option;
-  answersOpt.appendChild(optionItem);
-  questionsContainer.appendChild(answersOpt)
+  // answersOpt.appendChild(optionItem);
+  // questionsContainer.appendChild(answersOpt)
+  questionsContainer.appendChild(questionObject)
+
 };
 console.log("is this the askQuestions", askQuestion)
 console.log("what is this", answersOpt)
@@ -119,8 +124,11 @@ console.log("what is this", answersOpt)
 } else {
   console.error("Questions container not found in the DOM");
 }
-  })
- })
+//displayhide 
+  // function - remove document load 
+  //get question - // first quetsion how to cal and display tile and choices
+  // tracking score 
+ 
 
  
 
@@ -130,7 +138,7 @@ console.log("what is this", answersOpt)
   //   * When answer is clicked, the next question appears
   //   * 
   //   * If the answer clicked was incorrect then subtract time from the clock
-
+  //   *
   // * The quiz should end when all questions are answered or the timer reaches 0.
 
 
@@ -138,6 +146,8 @@ console.log("what is this", answersOpt)
 //   * When the game ends, it should display their score and give the user the ability to save their initials and their score
 
 function endGame() {
+
+  
 
   function winner() {
     //store win if answered correctly!
