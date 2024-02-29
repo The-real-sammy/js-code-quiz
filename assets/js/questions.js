@@ -61,7 +61,7 @@ function displayQuestion() {
 
     var questionObject = questions[0]; // start array at 0
     var askQuestion = document.createElement("p")
-    askQuestion.textContent = (1) + "." + questionObject.question;
+    askQuestion.textContent = [0 + 1] + "." + questionObject.question;
     questionsContainer.appendChild(askQuestion);
 
     var answersOpt = document.createElement("ul");
@@ -73,7 +73,7 @@ function displayQuestion() {
 
       // Create a button for each answer option
       var answerButton = document.createElement("button");
-      answerButton.textContent= "Select Answer " + (j + 1)
+      answerButton.textContent= (j + 1 + ".") + option 
       //event listener to click on answer option
       answerButton.addEventListener('click', function() {
       //check if answer is correct
