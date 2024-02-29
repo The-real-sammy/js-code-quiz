@@ -49,7 +49,7 @@ function startQuiz() {
   startButton.addEventListener("click", function () {
     startTimer();
     questionsContainer.removeAttribute("class") //timer starts when button is clicked.
-    displayQuestion(); //display function called to show code at button click event.
+    displayQuestion(); //display function called to show code at button click event
   }) // start timer when button clicked 
 
 }
@@ -70,7 +70,28 @@ function displayQuestion() {
 
       var optionItem = document.createElement("li");
       optionItem.textContent = option;
+
+      // Create a button for each answer option
+      var answerButton = document.createElement("button");
+      answerButton.textContent= "Select Answer " + (j + 1)
+      //event listener to click on answer option
+      answerButton.addEventListener('click', function() {
+      //check if answer is correct
+      if (option === questionObject.Winner){
+        console.log("correct answer selected")
+        //add score tracker logic here
+      }
+      else {
+        loser () 
+        console.log("wrong answer selected")
+      }
+      console.log('user selected:', option)
+      // Add logic here to check the answer, and update the score
+
+      })
+      optionItem.appendChild(answerButton);
       answersOpt.appendChild(optionItem);
+
 
       console.log("is this the askQuestions", askQuestion)
       console.log("what is this", answersOpt)
