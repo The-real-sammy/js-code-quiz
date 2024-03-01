@@ -61,15 +61,13 @@ function displayQuestion() {
 
     var questionObject = questions[0]; // start array at 0
     var askQuestion = document.createElement("p")
-    askQuestion.textContent = [0 + 1] + "." + questionObject.question;
+    askQuestion.textContent = [0 + 1 ] + "." + questionObject.question;
     questionsContainer.appendChild(askQuestion);
 
     var answersOpt = document.createElement("ul");
     for (let j = 0; j < questionObject.options.length; j++) {
       var option = questionObject.options[j];
 
-      var optionItem = document.createElement("li");
-      optionItem.textContent = option;
 
       // Create a button for each answer option
       var answerButton = document.createElement("button");
@@ -89,13 +87,13 @@ function displayQuestion() {
       // Add logic here to check the answer, and update the score
 
       })
-      optionItem.appendChild(answerButton);
-      answersOpt.appendChild(optionItem);
+      answersOpt.appendChild(answerButton);
 
 
       console.log("is this the askQuestions", askQuestion)
       console.log("what is this", answersOpt)
     };
+
     questionsContainer.appendChild(answersOpt)
 
   } else {
