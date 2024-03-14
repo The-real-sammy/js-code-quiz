@@ -43,18 +43,15 @@ For suggestions on what to review first, open the Chrome DevTools by pressing Co
 #### Screenshots of deployed page:
 
 ##### Image 01:
+<img width="1233" alt="Screenshot 2024-03-14 at 17 58 12" src="https://github.com/The-real-sammy/js-code-quiz/assets/152024562/9f8d935a-f978-43a8-a414-420173af5311">
 
 ##### Image 02:
+<img width="1225" alt="Screenshot 2024-03-14 at 17 58 20" src="https://github.com/The-real-sammy/js-code-quiz/assets/152024562/e2d18669-701c-4bea-a58d-16158f6df108">
 
 ##### Image 03:
-
-##### Image 04:
-
-##### Image 05:
-
+<img width="1202" alt="Screenshot 2024-03-14 at 17 58 37" src="https://github.com/The-real-sammy/js-code-quiz/assets/152024562/1b4fcdae-3133-46fe-9e81-bc9f51933620">
 
 ## Credits:
-
 Bootcamp spot: Starter Code
 
 ##### Tutorials:
