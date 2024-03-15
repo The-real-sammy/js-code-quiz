@@ -48,6 +48,18 @@ var timer;
 var win;  //  used to track the user's win status
 var selectedOption = ""; // code to display question target the questions id 
 
+function lose() {
+  timerCount -= 10;
+  timerElement.textContent = timerCount;
+  displayMessage("Wrong!");
+}
+
+function win() {
+displayMessage("Correct!");
+currentQI++;
+displayQuestion();
+}
+
 // * A start button that when clicked a timer starts and the first question appears.
 function startQuiz() {
   // eventListener added to start button to trigger timer, displaying first question
@@ -67,15 +79,15 @@ function startTimer() {
 
     if (timerCount >= 0) {
       // test if user has completed the quiz - && checks if both statements are true
-      // if (winner() && timerCount > 0) {
-      //   clearInterval(timer);// Stop the timer 
-      //   winner();
-      // }
+      if (win() && timerCount > 0) {
+        clearInterval(timer);// Stop the timer 
+        win();
+      }
     }
-    // if (timerCount === 0) {
-    //   clearInterval(timer);
-    //   loser() // Call a function to end the game when the timer runs out
-    // }
+    if (timerCount === 0) {
+      clearInterval(timer);
+      lose() // Call a function to end the game when the timer runs out
+    }
   }, 1000); // Set the interval to 1000ms (1 second)
 }
 
@@ -107,6 +119,7 @@ function displayQuestion() {
         //   winner(selectedOption, questionObject); // Call winner for other options
         }
 
+      
 
         var selectedOption = option;
       });
